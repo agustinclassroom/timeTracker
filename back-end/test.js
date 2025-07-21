@@ -23,3 +23,4 @@ console.log("readFile is async, so this will be read first.")
 fs.writeFile("./data/text-file.txt", "Hello, world!", () => {
     console.log("File was written")
 });
+
