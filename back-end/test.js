@@ -15,3 +15,11 @@ fs.readFile('./data/text-file.txt', (err,data) => {
     }
     console.log(data.toString());
 });
+
+console.log("readFile is async, so this will be read first.")
+
+// writing files
+
+fs.writeFile("./data/text-file.txt", "Hello, world!", () => {
+    console.log("File was written")
+});
