@@ -9,6 +9,9 @@ const PORT = 3000
 
 app.listen(PORT);
 
+// middleware & static files
+app.use(express.static("public"))
+
 
 app.get("/", (req,res) => {
 
