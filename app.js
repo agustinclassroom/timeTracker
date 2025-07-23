@@ -1,13 +1,24 @@
 const express = require("express");
+const mongoose = require("mongoose");
 
+const mongoURI = require("./mongoDB.js");
 const app = express();
+const PORT = 3000
+
+
+
+const dbURI = mongoURI
+mongoose.connect(dbURI)
+    .then((result) => { 
+        app.listen(PORT)
+        console.log("connected to db")})
+    .catch((err) => console.log(err));
 
 app.set("view engine", "ejs") 
 
 
-const PORT = 3000
 
-app.listen(PORT);
+
 
 // middleware & static files
 app.use(express.static("public"))
