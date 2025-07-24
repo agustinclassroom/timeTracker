@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const mongoURI = require("./mongoDB.js");
+
+const Log = require("./models/timeLog");
 const app = express();
 const PORT = 3000
 
@@ -14,18 +16,30 @@ mongoose.connect(dbURI)
         console.log("connected to db")})
     .catch((err) => console.log(err));
 
-app.set("view engine", "ejs") 
-
-
+app.set("view engine", "ejs");
 
 
 
 // middleware & static files
-app.use(express.static("public"))
+app.use(express.static("public"));
+app.use(express.urlencoded());
+// db handling and receiving
+
+app.post("/", (req,res) => {
+    console.log(req.body)
+    const log = new Log(req.body)
+    log.save()
+        .then((result) =>{
+            res.redirect("/");
+
+        })
+        .catch((err) => { console.log(err)});
+    
+});
 
 
+// pages
 app.get("/", (req,res) => {
-
     // res.send("<p>home page</p>");
     // res.sendFile("./test.html", { root: __dirname})
     res.render("index", { title: "Home" });

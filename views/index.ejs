@@ -5,9 +5,9 @@
     <%- include("./partials/header.ejs") %>
     <h3>A time logging app focused on visualizing goals.</h3>
     <div class ="content">
-        <form>
+        <form action="/" method="POST">
             <label for="entry">Log a time entry</label>
-            <input type="text" id="entry" required>
+            <input type="text" id="entry" name="entry" required>
             <button>Submit</button>
         </form>
 
