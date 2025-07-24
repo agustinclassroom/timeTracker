@@ -46,6 +46,7 @@ app.get("/", (req,res) => {
     Log.find()
         .then((result) => { 
             res.render("index", {title: "Home", logs: result})
+            console.log(result)
         })
         .catch((err) => {
             console.log(err);

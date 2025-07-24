@@ -14,7 +14,7 @@
             <h4>Entries</h4>
             <% if (logs.length > 0){ %>
                 <% logs.forEach(log => { %>
-                    <p class="log"><%log.entry%></p>
+                    <p class="log"><%= log.entry%></p>
                 <%})%>
             <%} else { %>
                 <p> There are no logs to display. </p>
