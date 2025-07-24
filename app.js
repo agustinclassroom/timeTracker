@@ -42,8 +42,16 @@ app.post("/", (req,res) => {
 app.get("/", (req,res) => {
     // res.send("<p>home page</p>");
     // res.sendFile("./test.html", { root: __dirname})
-    res.render("index", { title: "Home" });
+    // res.render("index", { title: "Home" });
+    Log.find()
+        .then((result) => { 
+            res.render("index", {title: "Home", logs: result})
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
+
 app.get("/graphs", (req,res) => {
 
     // res.send("<p>home page</p>");

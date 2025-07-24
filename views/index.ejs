@@ -10,7 +10,16 @@
             <input type="text" id="entry" name="entry" required>
             <button>Submit</button>
         </form>
-
+        <div class="logList">
+            <h4>Entries</h4>
+            <% if (logs.length > 0){ %>
+                <% logs.forEach(log => { %>
+                    <p class="log"><%log.entry%></p>
+                <%})%>
+            <%} else { %>
+                <p> There are no logs to display. </p>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
